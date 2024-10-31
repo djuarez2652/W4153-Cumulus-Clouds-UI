@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
-const ServiceButton = ({ children }) => {
+const ServiceButton = ({ to, children }) => {
     const [count, setCount] = useState(0);
-    // const nav = useNavigate();
-
-    // const handleClick = () => {
-    //     nav('/newpage')
-    // }
 
     return (
+        <Link to={to}>
             <button>{children}</button>
+        </Link>        
     );
-
 
 };
 

@@ -1,23 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
 import './App.css'
-import ServiceButton from './Components/ServiceButton'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
+import HomePage from './Pages/HomePage'
+import GigsPage from './Pages/GigsPage'
+import SchedulerPage from './Pages/SchedulerPage'
+import PaymentPage from './Pages/PaymentPage'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <img src='/src/assets/muselink.svg'></img>
-      <h1>MuseLink</h1>
-      
-      <ServiceButton>Search Gigs</ServiceButton>
-      <ServiceButton>Schedule</ServiceButton>
-      <ServiceButton>Book & Pay</ServiceButton>
-          
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage/>}/>
+        <Route path="/gigs" element={<GigsPage/>}/>
+        <Route path="/schedule" element={<SchedulerPage/>}/>
+        <Route path="/pay" element={<PaymentPage/>}/>
+      </Routes>
+    </Router>
   )
+  
+
 }
 
 export default App
