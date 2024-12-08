@@ -10,7 +10,8 @@ function HomePage() {
 
             <ServiceButton to="/gigs">Search Gigs</ServiceButton>
             <ServiceButton to="/schedule">Schedule</ServiceButton>
-            
+            <ServiceButton to="/transaction">Transaction</ServiceButton>
+
         </>
     )
   }

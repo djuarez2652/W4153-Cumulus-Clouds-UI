@@ -1,11 +1,12 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
-import { HashRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import HomePage from './Pages/HomePage'
 import GigsPage from './Pages/GigsPage'
 import SchedulerPage from './Pages/SchedulerPage'
 import PaymentPage from './Pages/PaymentPage'
+import TransactionPage from "./Pages/TransactionPage.jsx";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/gigs" element={<GigsPage/>}/>
         <Route path="/schedule" element={<SchedulerPage/>}/>
         <Route path="/pay" element={<PaymentPage/>}/>
+        <Route path="/transaction" element={<TransactionPage/>}/>
       </Routes>
     </Router>
   )
