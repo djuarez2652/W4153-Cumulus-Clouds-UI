@@ -35,6 +35,18 @@ h1 {
   line-height: 1.1;
 }
 
+.back-button {
+  width: 50px;
+  height: auto;
+}
+
+.topleft-corner {
+  position: absolute;
+  top: 20px; /* Distance from the top */
+  left: 20px; /* Distance from the left */
+  z-index: 1000; /* Ensures it stays on top of other elements */
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;

@@ -1,5 +1,6 @@
 import { useState } from "react";
 // import button from "../Components/button";
+import BackButton from "../Components/BackButton";
 
 function TransactionPage() {
     const [response, setResponse] = useState("");
@@ -24,6 +25,9 @@ function TransactionPage() {
 
     return (
         <>
+            <div className="topleft-corner">
+                <BackButton to="/"/>
+            </div>
             <h1>Test Transaction</h1>
 
             {/* button to call the welcome message */}

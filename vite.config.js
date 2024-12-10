@@ -8,4 +8,9 @@ const root = resolve(__dirname, 'src')
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      'react-native': 'react',
+    },
+  },
 })
