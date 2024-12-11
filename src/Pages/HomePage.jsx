@@ -6,7 +6,7 @@ function HomePage() {
     return (
         <>
             <img src='/src/assets/muselink.svg'></img>
-            <h1>MuseLink</h1>
+            <h1>Welcome to MuseLink!</h1>
 
             <ServiceButton to="/gigs">Search Gigs</ServiceButton>
             <ServiceButton to="/schedule">Schedule</ServiceButton>
