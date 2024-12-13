@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(0, 0, 0, 0.87);
-  background-color: #ffcea3;
+  color: rgb(228, 228, 228);
+  background-color: #343434;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -49,18 +49,19 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid transparent black;
   margin: 0.9em; 
   padding: 0.6em 1.2em;
   font-size: 1.4em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #fff8f8;
+  color: black;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #F2994A;
+  border-color: #1d1b19;
 }
 button:focus,
 button:focus-visible {
@@ -78,4 +79,26 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+input {
+  background-color: #eeeeee;
+  border-radius: 8px;
+  border: 1px solid transparent black;
+  margin: 0.9em; 
+  padding: 1.2em 1.8em;
+  color: black;
+}
+
+.login-forms {
+  background-color: #fffefe;
+  color: #252525;
+  padding: 120px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 1px rgba(28, 28, 28, 0.2);
+}
+
+.login-button {
+  background-color: #97CFA1;  
 }

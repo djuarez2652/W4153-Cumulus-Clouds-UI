@@ -14,7 +14,7 @@ const BackButton = ({ to, children }) => {
 
     return (
         <Link to={to}>
-            <img src="src/assets/back.png"
+            <img src="src/assets/whiteback.png"
             className="back-button"/>
         </Link>        
     );
