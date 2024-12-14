@@ -15,11 +15,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #63ac71;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #97CFA1;
 }
 
 body {
@@ -74,7 +74,7 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: #97CFA1;
   }
   button {
     background-color: #f9f9f9;
@@ -101,4 +101,22 @@ input {
 
 .login-button {
   background-color: #97CFA1;  
+}
+
+.styled-select {
+  background-color: #eeeeee;
+  border-radius: 8px;
+  border: 1px solid transparent black;
+  margin: 0.9em; 
+  padding: 1.2em 1.8em;
+  color: black;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+
+.styled-select:focus {
+  outline: none;
+  border-color: #0a0a0f;
+  box-shadow: 0 0 0 3px #252525;
 }

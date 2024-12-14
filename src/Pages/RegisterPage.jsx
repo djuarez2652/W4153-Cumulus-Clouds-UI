@@ -8,6 +8,7 @@ const Register = () => {
         username: "",
         email: "",
         password: "",
+        role: "",
     });
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
@@ -70,6 +71,19 @@ const Register = () => {
                             onChange={handleChange}
                             required
                         />
+                    </div>
+                    <div>
+                        <select
+                            name="role"
+                            value={formData.role}
+                            onChange={handleChange}
+                            required
+                            className="styled-select"
+                        >
+                            <option value="" disabled>Select Role</option>
+                            <option value="Musician">Musician</option>
+                            <option value="Booker">Booking Agent</option>
+                        </select>
                     </div>
                     <button className="login-button" type="submit">Register</button>
                 </form>
