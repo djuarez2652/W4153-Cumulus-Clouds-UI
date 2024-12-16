@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import BackButton from "../Components/BackButton";
 import LogoImg from "../Components/LogoImg";
@@ -12,6 +13,7 @@ const Register = () => {
     });
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -24,9 +26,10 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:8080/api/public/register", formData);
+            const response = await axios.post("https://cloud-computing-merged-ax3nlsln.ue.gateway.dev/api/public/register", formData);
             setMessage(response.data.message);
             setError("");
+            navigate("/login");
         } catch (err) {
             setError(err.response?.data?.message || "Registration failed. Please try again.");
             setMessage("");

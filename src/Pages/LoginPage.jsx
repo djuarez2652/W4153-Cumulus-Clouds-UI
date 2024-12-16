@@ -4,14 +4,14 @@ import BackButton from '../Components/BackButton';
 import LogoImg from '../Components/LogoImg';
 
 const LoginPage = () => {
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await login(email, password);
+            const response = await login(username, password);
             const { token } = response.data; // Assuming the API returns a token
             localStorage.setItem('jwtToken', token); // Store the token
             alert('Login successful!');
@@ -31,10 +31,10 @@ const LoginPage = () => {
                 <form onSubmit={handleLogin}>
                     <div>
                         <input
-                            type="email"
-                            placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="text"
+                            placeholder="Username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                             required
                         />
                     </div>

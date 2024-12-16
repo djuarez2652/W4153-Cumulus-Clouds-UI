@@ -1,19 +1,19 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = 'https://cloud-computing-merged-ax3nlsln.ue.gateway.dev/';
 
-export const login = async (email, password) => {
-    return axios.post(`${API_BASE_URL}/public/login`, { email, password });
+export const login = async (username, password) => {
+    return axios.post(`${API_BASE_URL}/api/public/login`, { username, password });
 };
 
 export const register = async (userData) => {
-    return axios.post(`${API_BASE_URL}/public/register`, userData);
+    return axios.post(`${API_BASE_URL}/api/public/register`, userData);
 };
 
 export const fetchUserDetails = async (userId) => {
-    return axios.get(`${API_BASE_URL}/users/${userId}`);
+    return axios.get(`${API_BASE_URL}/api/users/${userId}`);
 };
 
 export const updateUserDetails = async (userId, userData) => {
-    return axios.put(`${API_BASE_URL}/users/${userId}`, userData);
+    return axios.put(`${API_BASE_URL}/api/users/${userId}`, userData);
 };
