@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { login } from './../api/userService';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import BackButton from '../Components/BackButton';
 import LogoImg from '../Components/LogoImg';
 
@@ -7,16 +8,29 @@ const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
             const response = await login(username, password);
-            const { token } = response.data; // Assuming the API returns a token
-            localStorage.setItem('jwtToken', token); // Store the token
-            alert('Login successful!');
-        } catch (err) {
-            setError('Invalid credentials, please try again.');
+
+            const { token, role, message } = JSON.parse(response.data);
+
+            console.log(message);
+
+            localStorage.setItem("token", token);
+            localStorage.setItem("role", role);
+
+            if (role === "MUSICIAN") {
+                navigate("/musician-dashboard");
+            } else if (role === "BOOKER") {
+                navigate("/booker-dashboard");
+            } else {
+                console.error("Unknown role");
+            }
+        } catch (error) {
+            console.error("Login failed:", error.response?.data || error.message);
         }
     };
 

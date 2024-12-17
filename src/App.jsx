@@ -9,6 +9,11 @@ import PaymentPage from './Pages/PaymentPage'
 import TransactionPage from "./Pages/TransactionPage.jsx";
 import LoginPage from './Pages/LoginPage';
 import RegisterPage from './Pages/RegisterPage';
+import MusicianDashboard from './Pages/Musician/MusicianDashboard';
+import MusicianProfile from './Pages/Musician/MusicianProfile';
+// import BookerDashboard from './Pages/Booker/BookerDashboard';
+// import BookerProfile from './Pages/Booker/BookerProfile';
+
 function App() {
   return (
     <Router>
@@ -16,6 +21,10 @@ function App() {
         <Route path="/" element={<HomePage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/register" element={<RegisterPage/>}/>
+        <Route path="/musician-dashboard" element={<MusicianDashboard/>}/>
+        <Route path="/musician-profile" element={<MusicianProfile/>}/>
+        {/* <Route path="/booker-dashboard" element={<BookerDashboard/>}/> */}
+        {/* <Route path="/booker-profile" element={<BookerProfile/>}/> */}
         <Route path="/gigs" element={<GigsPage/>}/>
         <Route path="/schedule" element={<SchedulerPage/>}/>
         <Route path="/pay" element={<PaymentPage/>}/>
