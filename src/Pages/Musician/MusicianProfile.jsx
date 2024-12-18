@@ -1,9 +1,20 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { createMusicianProfile, uploadProfilePicture } from "../../api/userService";
+import axios from 'axios';
 
-const MusicianProfile = ({ token }) => {
+const MusicianProfile = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const { token } = location.state || {}; // Retrieve token from navigation state
+    console.log("Token in MusicianProfile:", token); // Debug token
+
+    if (!token) {
+        console.error("Token is missing. Please register again.");
+        navigate("/register"); // Redirect back to register if token is missing
+        return null;
+    }
 
     // Form data for musician
     const [formData, setFormData] = useState({
@@ -19,6 +30,27 @@ const MusicianProfile = ({ token }) => {
 
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
+
+    const [accountObject, setAccountObject] = useState(null);
+    const userId =  "b4ba86a7-6de5-4aab-ae37-b5a639feac5b"; // Replace with actual user ID
+
+    useEffect(() => {
+        const fetchAccountDetails = async () => {
+            try {
+                const response = await axios.get(`/api/accounts/${userId}`);
+                setAccountObject(response.data);
+            } catch (error) {
+                console.error("Error fetching account details:", error);
+            }
+        };
+
+        fetchAccountDetails();
+    }, [userId]);
+
+    // Ensure accountObject is available before using it
+    if (!accountObject) {
+        return <div>Loading...</div>;
+    }
 
     // Handle input changes
     const handleChange = (e) => {
@@ -46,33 +78,23 @@ const MusicianProfile = ({ token }) => {
                 yearsOfExperience: parseInt(formData.yearsOfExperience, 10),
                 sampleWorks: formData.sampleWorks.split(",").map((i) => i.trim()),
                 availability: formData.availability,
+                account: accountObject,
             };
 
-            const musicianResponse = await axios.post("/api/accounts/musicians", payload, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
-            });
-
+            console.log("Token in MusicianProfile:", token);
+            const musicianResponse = await createMusicianProfile(payload, token);
             const userId = musicianResponse.data.account.userId; // Extract user_id from response
 
             // Step 2: Upload Profile Picture
             if (file) {
-                const formData = new FormData();
-                formData.append("file", file);
-
-                await axios.post(`/api/accounts/${userId}/profile-picture`, formData, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        "Content-Type": "multipart/form-data",
-                    },
-                });
+                await uploadProfilePicture(userId, file, token);
             }
 
             setMessage("Musician profile created successfully with picture uploaded!");
             setError("");
-            navigate("/musician-dashboard");
+            
+            // Navigate to musician_dashboard with token
+            navigate("/musician_dashboard", { state: { token } });
         } catch (err) {
             setError(err.response?.data?.message || "Failed to create musician profile or upload picture.");
             setMessage("");
@@ -139,7 +161,7 @@ const MusicianProfile = ({ token }) => {
                         required
                     />
                 </div>
-                <div>
+                {/* <div>
                     <label>Profile Picture</label>
                     <input
                         type="file"
@@ -147,7 +169,7 @@ const MusicianProfile = ({ token }) => {
                         onChange={handleFileChange}
                         required
                     />
-                </div>
+                </div> */}
                 <button type="submit">Create Musician Profile</button>
             </form>
         </div>

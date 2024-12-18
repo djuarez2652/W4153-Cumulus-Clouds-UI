@@ -27,13 +27,15 @@ const Register = () => {
         e.preventDefault();
         try {
             const response = await register(formData);
+            const token = response.data.token;
+
             setMessage(response.data.message);
             setError("");
             
             if (formData.role === "Musician") {
-                navigate("/musician-profile", { state: { username: formData.username } });
+                navigate("/musician-profile", { state: { token } });
             } else if (formData.role === "Booker") {
-                navigate("/booker-profile", { state: { username: formData.username } });
+                navigate("/booker-profile", { state: { token } });
             }
         } catch (err) {
             setError(err.response?.data?.message || "Registration failed. Please try again.");

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import BackButton from '../Components/BackButton';
 import LogoImg from '../Components/LogoImg';
-
+import { login } from '../api/userService';
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -15,20 +15,23 @@ const LoginPage = () => {
         try {
             const response = await login(username, password);
 
-            const { token, role, message } = JSON.parse(response.data);
+            // const { token, role, message } = JSON.parse(response.data);
 
-            console.log(message);
+            // console.log(message);
 
-            localStorage.setItem("token", token);
-            localStorage.setItem("role", role);
+            // // localStorage.setItem("token", token);
+            // // localStorage.setItem("role", role);
 
-            if (role === "MUSICIAN") {
+            // role = "MUSICIAN";
+            // token = "1234567890";
+
+            // if (role === "MUSICIAN") {
                 navigate("/musician-dashboard");
-            } else if (role === "BOOKER") {
-                navigate("/booker-dashboard");
-            } else {
-                console.error("Unknown role");
-            }
+            // } else if (role === "BOOKER") {
+            //     navigate("/booker-dashboard");
+            // } else {
+            //     console.error("Unknown role");
+            // }
         } catch (error) {
             console.error("Login failed:", error.response?.data || error.message);
         }
