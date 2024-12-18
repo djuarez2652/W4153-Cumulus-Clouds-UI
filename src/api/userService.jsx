@@ -44,7 +44,7 @@ export const createMusicianProfile = async (musicianData, accountId, token) => {
 };
 
 export const getMusicianProfile = async (musicianId, token) => {
-    return axios.get(`${API_BASE_URL_USERMANAGEMENT}/api/accounts/musicians/getMusicianById?musicianId=${musicianId}`, {
+    return axios.get(`${API_BASE_URL_USERMANAGEMENT}/api/accounts/musicians/getMusicianById?id=${musicianId}`, {
         headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
