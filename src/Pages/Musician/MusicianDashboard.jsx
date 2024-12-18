@@ -9,7 +9,7 @@ const MusicianDashboard = () => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
 
-    const musicianId = 'ef03b9d6-f101-4df1-bc5c-96dacbaa8098';
+    const musicianId = 'ed864aba0-4ae7-4c2b-b7cf-821cbaa2d17e';
     const token = 'your_valid_token_here'; // Replace with your actual token
 
     useEffect(() => {
@@ -43,11 +43,11 @@ const MusicianDashboard = () => {
         }
     };
 
-    const handleSendMessageToDavid = (e) => {
+    const handleSendMessageToAshley = (e) => {
         e.preventDefault();
         if (newMessage.trim()) {
-            console.log(`Message to David: ${newMessage}`);
-            setMessages([...messages, `To David: ${newMessage}`]);
+            console.log(`Message to Ashley: ${newMessage}`);
+            setMessages([...messages, `To Ashley: ${newMessage}`]);
             setNewMessage('');
         }
     };
@@ -79,7 +79,7 @@ const MusicianDashboard = () => {
 
             <div style={{ border: '1px solid #ccc', padding: '16px', marginTop: '20px' }}>
                 <h2>Sign Up for a Gig</h2>
-                <p>Join us for an exciting gig opportunity hosted by David Juarez!</p>
+                <p>Join us for an exciting gig opportunity hosted by Ashley Garcia!</p>
                 <p><strong>Venue:</strong> Rock Venue</p>
                 <p><strong>Looking for:</strong> Bassist</p>
                 <button onClick={handleGigSignup} disabled={gigSignedUp}>
@@ -87,18 +87,18 @@ const MusicianDashboard = () => {
                 </button>
                 {gigSignedUp && <p>Confirmation email sent to {musicianProfile.account.email}</p>}
 
-                <form onSubmit={handleSendMessageToDavid} style={{ marginTop: '10px' }}>
+                <form onSubmit={handleSendMessageToAshley} style={{ marginTop: '10px' }}>
                     <input
                         type="text"
                         value={newMessage}
                         onChange={(e) => setNewMessage(e.target.value)}
-                        placeholder="Message David about the venue"
+                        placeholder="Message Ashley about the venue"
                     />
-                    <button type="submit">Send to David</button>
+                    <button type="submit">Send to Ashley</button>
                 </form>
 
                 <div style={{ marginTop: '20px', maxHeight: '200px', overflowY: 'auto', border: '1px solid #ccc', padding: '10px' }}>
-                    <h3>Chat with David</h3>
+                    <h3>Chat with Ashley</h3>
                     {messages.length > 0 ? (
                         messages.map((msg, index) => (
                             <p key={index}>{msg}</p>
