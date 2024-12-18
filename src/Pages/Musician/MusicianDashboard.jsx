@@ -9,7 +9,7 @@ const MusicianDashboard = () => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
 
-    const musicianId = 'ed864aba0-4ae7-4c2b-b7cf-821cbaa2d17e';
+    const musicianId = 'db278d49-c95d-41d4-9495-a9e7b2950668';
     const token = 'your_valid_token_here'; // Replace with your actual token
 
     useEffect(() => {
